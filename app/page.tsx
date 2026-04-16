@@ -1,11 +1,9 @@
 "use client";
-import Test from "@/component/test";
 import Splash from "@/component/splash";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { Capacitor } from "@capacitor/core";
 import { useEffect, useState } from "react";
 import { redirect } from 'next/navigation';
-// import { useRouter } from "next/navigation";
 
 export default function Home() {
 
@@ -13,7 +11,7 @@ export default function Home() {
 
   const [isLoading, setIsLoading] = useState(isWeb);
 
-  // const router = useRouter();
+  const [isLogged, setLogged] = useState(true);
 
 
   useEffect(() => {
@@ -28,7 +26,6 @@ export default function Home() {
         try {
           await SplashScreen.hide();
           redirect('/login');
-          // router.push('/login');
         } catch (error) {
           console.error("SplashScreen hide failed (likely running in standard browser):", error);
         }
@@ -43,13 +40,12 @@ export default function Home() {
   if (isLoading) {
     return <Splash />
   } else {
-    redirect('/login');
-    // router.push('/login');
+    if(!isLogged) {
+      redirect('/login');
+    } else {
+      redirect('/home');
+    }
   }
 
-  return (
-    <div className='h-screen w-screen bg-[linear-gradient(to_bottom_right,#FFFFFF_42%,#D2FAE6_100%)] flex justify-center items-center'>
-      <Test />
-    </div>
-  );
+  return null;
 }
