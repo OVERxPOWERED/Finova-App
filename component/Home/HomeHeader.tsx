@@ -4,7 +4,7 @@ import { Bell } from "lucide-react";
 
 export default function HomeHeader() {
   return (
-    <div className="flex items-center justify-between px-5 pt-4 pb-2">
+    <div className="flex items-center justify-between px-5 pt-3 pb-1">
       {/* Logo */}
       <div className="flex items-center gap-2.5">
         <img

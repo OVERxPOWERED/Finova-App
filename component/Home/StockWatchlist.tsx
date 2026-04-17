@@ -46,7 +46,7 @@ export default function StockWatchlist() {
 
   return (
     <div
-      className="mx-5 mt-5 rounded-2xl bg-white p-5 shadow-sm animate-fade-in-up"
+      className="mx-5 mt-3 rounded-2xl bg-white p-4 shadow-sm animate-fade-in-up"
       style={{ animationDelay: "200ms" }}
     >
       {/* Tabs */}
@@ -75,7 +75,7 @@ export default function StockWatchlist() {
       </div>
 
       {/* Stock List */}
-      <div className="mt-3 divide-y divide-[#f0f2f1] stagger-children">
+      <div className="mt-2 divide-y divide-[#f0f2f1] stagger-children">
         {stocksData.map((stock) => (
           <StockItem
             key={stock.name}
@@ -93,7 +93,7 @@ export default function StockWatchlist() {
       {/* View More */}
       <button
         id="view-more-stocks"
-        className="mt-2 flex w-full items-center justify-center gap-1 py-2 text-[13px] font-semibold text-[#0E1B19] transition-colors hover:text-[#00695C] tap-highlight"
+        className="mt-1 flex w-full items-center justify-center gap-1 py-1.5 text-[13px] font-semibold text-[#0E1B19] transition-colors hover:text-[#00695C] tap-highlight"
       >
         View More
         <ChevronRight size={14} />

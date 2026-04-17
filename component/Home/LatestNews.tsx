@@ -44,7 +44,7 @@ const newsData: NewsItem[] = [
 export default function LatestNews() {
   return (
     <div
-      className="mt-6 px-5 pb-4 animate-fade-in-up"
+      className="mt-4 px-5 pb-4 animate-fade-in-up"
       style={{ animationDelay: "300ms" }}
     >
       {/* Section Header */}

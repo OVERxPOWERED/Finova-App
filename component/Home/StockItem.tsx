@@ -21,7 +21,7 @@ export default function StockItem({
   isPositive,
 }: StockItemProps) {
   return (
-    <div className="flex items-center justify-between py-3.5 animate-fade-in-up">
+    <div className="flex items-center justify-between py-2.5 animate-fade-in-up">
       {/* Left side */}
       <div className="flex flex-col gap-0.5">
         <span className="text-[15px] font-semibold text-[#0E1B19]">{name}</span>

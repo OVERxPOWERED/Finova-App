@@ -2,50 +2,43 @@
 import Splash from "@/component/splash";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { Capacitor } from "@capacitor/core";
-import { useEffect, useState } from "react";
-import { redirect } from 'next/navigation';
+import { useEffect } from "react";
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-
+  const router = useRouter();
   const isWeb = Capacitor.getPlatform() === 'web';
-
-  const [isLoading, setIsLoading] = useState(isWeb);
-
-  const [isLogged, setLogged] = useState(true);
-
+  const isLogged = true;
 
   useEffect(() => {
     const initializeApp = async () => {
-
       if (isWeb) {
-        const timer = setTimeout(() => {
-          setIsLoading(false);
+        // On web: show custom splash for 2 seconds, then navigate
+        setTimeout(() => {
+          router.replace(isLogged ? '/home' : '/login');
         }, 2000);
-        return () => clearTimeout(timer);
       } else {
+        // On native: Capacitor splash is already showing.
+        // Hide it and navigate immediately.
         try {
           await SplashScreen.hide();
-          redirect('/login');
         } catch (error) {
-          console.error("SplashScreen hide failed (likely running in standard browser):", error);
+          console.error("SplashScreen hide failed:", error);
         }
+        router.replace(isLogged ? '/home' : '/login');
       }
-
-
-    }
+    };
 
     initializeApp();
-  }, [isWeb]);
+  }, [isWeb, isLogged, router]);
 
-  if (isLoading) {
-    return <Splash />
-  } else {
-    if(!isLogged) {
-      redirect('/login');
-    } else {
-      redirect('/home');
-    }
+  // Web: show our custom React splash screen
+  // Native: show a blank screen with matching background (Capacitor's native splash is on top)
+  if (isWeb) {
+    return <Splash />;
   }
 
-  return null;
+  return (
+    <div style={{ height: '100vh', width: '100vw', backgroundColor: '#E4FCF0' }} />
+  );
 }

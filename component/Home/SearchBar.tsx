@@ -4,9 +4,9 @@ import { Search, SlidersHorizontal } from "lucide-react";
 
 export default function SearchBar() {
   return (
-    <div className="mx-5 mt-5 flex items-center gap-3 animate-fade-in-up" style={{ animationDelay: "150ms" }}>
+    <div className="mx-5 mt-3 flex items-center gap-3 animate-fade-in-up" style={{ animationDelay: "150ms" }}>
       {/* Search Input */}
-      <div className="flex flex-1 items-center gap-2.5 rounded-xl border border-[#d6ddd9] bg-white px-4 py-3 shadow-sm transition-shadow focus-within:shadow-md focus-within:border-[#00695C]/40">
+      <div className="flex flex-1 items-center gap-2.5 rounded-xl border border-[#d6ddd9] bg-white px-4 py-2.5 shadow-sm transition-shadow focus-within:shadow-md focus-within:border-[#00695C]/40">
         <Search size={18} className="text-[#9ca8a2] flex-shrink-0" />
         <input
           id="search-instruments"
